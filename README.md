@@ -1,1 +1,1 @@
-# smiple-api-gateway
+# simple-api-gateway
