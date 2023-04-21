@@ -1,0 +1,7 @@
+proxy:
+  lims:
+    - http://172.17.42.1
+    - http://172.17.42.2
+  billing-manage:
+    - http://172.17.42.1
+    - http://172.17.42.2
