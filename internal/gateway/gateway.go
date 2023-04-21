@@ -64,6 +64,9 @@ func (sgw SimpleGW) ReverseProxy(addr string) {
 	sgw.R.URL.Host = remote.Host
 	sgw.R.URL.Scheme = remote.Scheme
 	sgw.R.Header.Set("X-Forwarded-Host", sgw.R.Header.Get("Host"))
+	if len(sgw.R.Header.Get("X-Request-ID")) == 0 {
+		sgw.R.Header.Set("X-Request-ID", RandStringBytesMask(20))
+	}
 	sgw.R.Host = remote.Host
 	httputil.NewSingleHostReverseProxy(remote).ServeHTTP(sgw.W, sgw.R)
 }
